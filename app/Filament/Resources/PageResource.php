@@ -7,7 +7,7 @@ use App\Models\Page;
 use Filament\Forms;
 use Filament\Schemas\Schema;
 use Filament\Schemas\Components as SchemaComponents;
-use Filament\Forms\Get;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Resources\Resource;
 use Filament\Actions;
 use Filament\Tables;
