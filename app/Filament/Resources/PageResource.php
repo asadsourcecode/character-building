@@ -8,6 +8,7 @@ use Filament\Forms;
 use Filament\Schemas\Schema;
 use Filament\Forms\Get;
 use Filament\Resources\Resource;
+use Filament\Actions;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -438,9 +439,9 @@ class PageResource extends Resource
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->actions([Tables\Actions\EditAction::make()])
+            ->actions([Actions\EditAction::make()])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([Tables\Actions\DeleteBulkAction::make()]),
+                Actions\BulkActionGroup::make([Actions\DeleteBulkAction::make()]),
             ]);
     }
 
