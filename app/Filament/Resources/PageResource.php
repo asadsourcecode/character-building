@@ -6,6 +6,7 @@ use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
 use Filament\Forms;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components as SchemaComponents;
 use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Actions;
@@ -35,7 +36,7 @@ class PageResource extends Resource
     {
         return $form->schema([
 
-            Forms\Components\Grid::make(3)->schema([
+            SchemaComponents\Grid::make(3)->schema([
                 Forms\Components\TextInput::make('title')
                     ->label('Page Title')
                     ->required()
@@ -57,7 +58,7 @@ class PageResource extends Resource
                 ->helperText('URL slug — homepage uses "home", others use "/pages/{slug}"'),
 
             // ── Common fields (all pages) ────────────────────────────────────
-            Forms\Components\Section::make('Main Content')->schema([
+            SchemaComponents\Section::make('Main Content')->schema([
                 Forms\Components\Textarea::make('short_description')
                     ->label('Short Description / Intro')
                     ->rows(3)
@@ -83,7 +84,7 @@ class PageResource extends Resource
             ])->columns(2),
 
             // ── HOME PAGE meta fields ────────────────────────────────────────
-            Forms\Components\Section::make('Page Settings')
+            SchemaComponents\Section::make('Page Settings')
                 ->schema([
                     Forms\Components\TextInput::make('meta.page_title')
                         ->label('Browser Tab Title')
@@ -92,7 +93,7 @@ class PageResource extends Resource
                 ])
                 ->visible(fn (Get $get) => $get('template') === 'home'),
 
-            Forms\Components\Section::make('Hero Section')
+            SchemaComponents\Section::make('Hero Section')
                 ->description('Top banner content of the homepage')
                 ->schema([
                     Forms\Components\TextInput::make('meta.hero_heading')
@@ -122,7 +123,7 @@ class PageResource extends Resource
                 ->columns(2)
                 ->visible(fn (Get $get) => $get('template') === 'home'),
 
-            Forms\Components\Section::make('Vision & Mission')
+            SchemaComponents\Section::make('Vision & Mission')
                 ->schema([
                     Forms\Components\TextInput::make('meta.vision_heading')
                         ->label('Vision Heading')
@@ -138,7 +139,7 @@ class PageResource extends Resource
                 ->columns(2)
                 ->visible(fn (Get $get) => $get('template') === 'home'),
 
-            Forms\Components\Section::make('Moral / Social / Emotional Section')
+            SchemaComponents\Section::make('Moral / Social / Emotional Section')
                 ->schema([
                     Forms\Components\TextInput::make('meta.moral_heading')
                         ->label('Section Heading')
@@ -154,7 +155,7 @@ class PageResource extends Resource
                 ->columns(2)
                 ->visible(fn (Get $get) => $get('template') === 'home'),
 
-            Forms\Components\Section::make('Character Building Course Section')
+            SchemaComponents\Section::make('Character Building Course Section')
                 ->schema([
                     Forms\Components\TextInput::make('meta.course_heading')
                         ->label('Heading Line 1')
@@ -178,7 +179,7 @@ class PageResource extends Resource
                 ->columns(2)
                 ->visible(fn (Get $get) => $get('template') === 'home'),
 
-            Forms\Components\Section::make('Video Section')
+            SchemaComponents\Section::make('Video Section')
                 ->schema([
                     Forms\Components\TextInput::make('meta.video_heading')
                         ->label('Section Heading')
@@ -197,7 +198,7 @@ class PageResource extends Resource
                 ->columns(2)
                 ->visible(fn (Get $get) => $get('template') === 'home'),
 
-            Forms\Components\Section::make('Partners Section')
+            SchemaComponents\Section::make('Partners Section')
                 ->schema([
                     Forms\Components\TextInput::make('meta.partners_heading')
                         ->label('Partners Heading')
@@ -209,7 +210,7 @@ class PageResource extends Resource
                 ->columns(2)
                 ->visible(fn (Get $get) => $get('template') === 'home'),
 
-            Forms\Components\Section::make('Promo Banner')
+            SchemaComponents\Section::make('Promo Banner')
                 ->schema([
                     Forms\Components\FileUpload::make('meta.promo_banner')
                         ->label('Promo Banner Image')
@@ -220,7 +221,7 @@ class PageResource extends Resource
                 ->visible(fn (Get $get) => $get('template') === 'home'),
 
             // ── METHODOLOGY PAGE meta fields ────────────────────────────────
-            Forms\Components\Section::make('Background Images')
+            SchemaComponents\Section::make('Background Images')
                 ->schema([
                     Forms\Components\FileUpload::make('meta.bg_methodology')
                         ->label('Top Section Background (bg-methodology)')
@@ -236,7 +237,7 @@ class PageResource extends Resource
                 ->columns(1)
                 ->visible(fn (Get $get) => $get('template') === 'methodology'),
 
-            Forms\Components\Section::make('Preface Section')
+            SchemaComponents\Section::make('Preface Section')
                 ->schema([
                     Forms\Components\TextInput::make('meta.preface_heading')
                         ->label('Preface Heading')
@@ -251,7 +252,7 @@ class PageResource extends Resource
                 ->columns(1)
                 ->visible(fn (Get $get) => $get('template') === 'methodology'),
 
-            Forms\Components\Section::make('Three Hypotheses')
+            SchemaComponents\Section::make('Three Hypotheses')
                 ->schema([
                     Forms\Components\RichEditor::make('meta.hypothesis_1')
                         ->label('Hypothesis 1')
@@ -270,7 +271,7 @@ class PageResource extends Resource
                 ->columns(1)
                 ->visible(fn (Get $get) => $get('template') === 'methodology'),
 
-            Forms\Components\Section::make('Middle Banner Image')
+            SchemaComponents\Section::make('Middle Banner Image')
                 ->schema([
                     Forms\Components\FileUpload::make('meta.image_1')
                         ->label('Middle Banner Image (wide horizontal image)')
@@ -281,7 +282,7 @@ class PageResource extends Resource
                 ->columns(1)
                 ->visible(fn (Get $get) => $get('template') === 'methodology'),
 
-            Forms\Components\Section::make('Main Objective')
+            SchemaComponents\Section::make('Main Objective')
                 ->schema([
                     Forms\Components\Textarea::make('meta.objective_text')
                         ->label('Objective Main Text')
@@ -297,7 +298,7 @@ class PageResource extends Resource
                 ->columns(1)
                 ->visible(fn (Get $get) => $get('template') === 'methodology'),
 
-            Forms\Components\Section::make('Bottom Image')
+            SchemaComponents\Section::make('Bottom Image')
                 ->schema([
                     Forms\Components\FileUpload::make('meta.image_2')
                         ->label('Bottom Image')
@@ -310,7 +311,7 @@ class PageResource extends Resource
 
             // ── NEW SUBJECT PAGE fields ──────────────────────────────────────
             // Section 1: Launching Heading (bold text below the title box)
-            Forms\Components\Section::make('Launching Heading')
+            SchemaComponents\Section::make('Launching Heading')
                 ->description('Bold heading shown below the title box. Use a new line for the line break.')
                 ->schema([
                     Forms\Components\Textarea::make('meta.launching_heading')
@@ -322,7 +323,7 @@ class PageResource extends Resource
                 ->visible(fn (Get $get) => $get('template') === 'new-subject'),
 
             // Section 2: Four intro paragraphs (shown above the building image)
-            Forms\Components\Section::make('Introduction Paragraphs')
+            SchemaComponents\Section::make('Introduction Paragraphs')
                 ->description('Four paragraphs shown above the building image')
                 ->schema([
                     Forms\Components\Textarea::make('meta.para_1')
@@ -349,7 +350,7 @@ class PageResource extends Resource
                 ->visible(fn (Get $get) => $get('template') === 'new-subject'),
 
             // Section 3: Building image (shown between intro paragraphs and bullet list)
-            Forms\Components\Section::make('Building Image')
+            SchemaComponents\Section::make('Building Image')
                 ->description('Image shown below the 4 intro paragraphs')
                 ->schema([
                     Forms\Components\FileUpload::make('meta.building_image')
@@ -361,7 +362,7 @@ class PageResource extends Resource
                 ->visible(fn (Get $get) => $get('template') === 'new-subject'),
 
             // Section 4: Bullet list section
-            Forms\Components\Section::make('Bullet List Section')
+            SchemaComponents\Section::make('Bullet List Section')
                 ->description('Text before the bullet list, then the bullet items themselves')
                 ->schema([
                     Forms\Components\Textarea::make('meta.approach_text')
@@ -379,7 +380,7 @@ class PageResource extends Resource
                 ->visible(fn (Get $get) => $get('template') === 'new-subject'),
 
             // Section 5: Four closing paragraphs (after bullet list, before girls image)
-            Forms\Components\Section::make('Closing Paragraphs')
+            SchemaComponents\Section::make('Closing Paragraphs')
                 ->description('Four paragraphs shown after the bullet list')
                 ->schema([
                     Forms\Components\Textarea::make('meta.quote_text')
@@ -406,7 +407,7 @@ class PageResource extends Resource
                 ->visible(fn (Get $get) => $get('template') === 'new-subject'),
 
             // Section 6: Girls image (bottom of page)
-            Forms\Components\Section::make('Girls Image')
+            SchemaComponents\Section::make('Girls Image')
                 ->description('Image shown at the very bottom of the page')
                 ->schema([
                     Forms\Components\FileUpload::make('meta.girls_image')
@@ -418,7 +419,7 @@ class PageResource extends Resource
                 ->visible(fn (Get $get) => $get('template') === 'new-subject'),
 
             // ── SEO ─────────────────────────────────────────────────────────
-            Forms\Components\Section::make('SEO')->schema([
+            SchemaComponents\Section::make('SEO')->schema([
                 Forms\Components\TextInput::make('meta_title')->maxLength(255),
                 Forms\Components\Textarea::make('meta_description')->columnSpanFull()->rows(2),
             ])->collapsed(),
