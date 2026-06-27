@@ -6,7 +6,7 @@ use App\Filament\Resources\MenuResource\Pages;
 use App\Filament\Resources\MenuResource\RelationManagers\ItemsRelationManager;
 use App\Models\Menu;
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -17,13 +17,13 @@ class MenuResource extends Resource
 {
     protected static ?string $model = Menu::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-bars-3';
+    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-bars-3';
 
-    protected static ?string $navigationGroup = 'Navigation';
+    protected static string|\UnitEnum|null $navigationGroup = 'Navigation';
 
     protected static ?string $navigationLabel = 'Menus';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form
             ->schema([

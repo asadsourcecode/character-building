@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PartnerResource\Pages;
 use App\Models\Partner;
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -13,11 +13,11 @@ use Filament\Tables\Table;
 class PartnerResource extends Resource
 {
     protected static ?string $model = Partner::class;
-    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
-    protected static ?string $navigationGroup = 'Content';
+    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-building-office-2';
+    protected static string|\UnitEnum|null $navigationGroup = 'Content';
     protected static ?int $navigationSort = 5;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form->schema([
             Forms\Components\TextInput::make('name')
