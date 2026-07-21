@@ -31,4 +31,12 @@ return [
         ],
     ],
 
+    'imagemagick' => [
+        'binary' => env('IMAGEMAGICK_BINARY', 'magick'),
+        // Ghostscript's bin dir is injected into the subprocess's own PATH explicitly,
+        // rather than relying on the system PATH — a system-wide PATH change doesn't
+        // reach an already-running PHP/queue-worker process until it's restarted.
+        'ghostscript_bin' => env('GHOSTSCRIPT_BIN_DIR', 'C:\\Program Files\\gs\\gs10.07.1\\bin'),
+    ],
+
 ];

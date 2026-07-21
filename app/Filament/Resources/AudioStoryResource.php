@@ -18,6 +18,8 @@ class AudioStoryResource extends Resource
 {
     protected static ?string $model = AudioStory::class;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Schema $form): Schema
